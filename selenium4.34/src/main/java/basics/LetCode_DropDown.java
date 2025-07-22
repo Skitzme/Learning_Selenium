@@ -26,48 +26,56 @@ public class LetCode_DropDown {
 		 * System.out.println(firstElemet.getText());
 		 */
 		
-		WebElement superHeros=	driver.findElement(By.id("superheros"));
-		Select select=new Select(superHeros);
+		/*
+		 * WebElement superHeros= driver.findElement(By.id("superheros")); Select
+		 * select=new Select(superHeros);
+		 * 
+		 * Boolean status1=select.isMultiple(); if(status1==true) {
+		 * select.selectByIndex(0); select.selectByValue("sm");
+		 * select.selectByVisibleText("Thor");
+		 * select.selectByContainsVisibleText("Woman"); select.selectByIndex(2);
+		 * select.selectByIndex(5);
+		 * 
+		 * List<WebElement>selectedOptions= select.getAllSelectedOptions(); int
+		 * size=selectedOptions.size();
+		 * 
+		 * for(int i=0; i<size; i++) { System.out.println("the selected options are: " +
+		 * selectedOptions.get(i).getText()); } } else {
+		 * System.out.println("it is not mulitple so select one element only at a time"
+		 * ); select.selectByIndex(0); } select.deselectByIndex(0);
+		 * select.deselectByValue("sm"); select.deselectByVisibleText("Thor");
+		 * select.deSelectByContainsVisibleText("Woman"); select.deselectByIndex(2);
+		 * select.deselectByIndex(5);
+		 * 
+		 * List<WebElement>selectedOptions1= select.getAllSelectedOptions();
+		 * System.out.println(selectedOptions1.size());
+		 */
 		
-		Boolean status1=select.isMultiple();
-		if(status1==true)
+	WebElement languages=	driver.findElement(By.id("lang"));
+	Select select=new Select(languages);
+	List<WebElement> allLang=	select.getOptions();
+	int size=allLang.size(); //
+	
+	for(int i=0; i<size;i++)
+	{
+		System.out.println(" the values are: " + allLang.get(i).getText());
+		if(i==size-1)
 		{
-			select.selectByIndex(0);
-			select.selectByValue("sm");
-			select.selectByVisibleText("Thor");
-			select.selectByContainsVisibleText("Woman");
-			select.selectByIndex(2);
-			select.selectByIndex(5);
-			
-		List<WebElement>selectedOptions=	select.getAllSelectedOptions();
-		int size=selectedOptions.size();
-		
-		for(int i=0; i<size; i++)
-		{
-			System.out.println("the selected options are: " + selectedOptions.get(i).getText());
+			select.selectByIndex(i);
+			System.out.println(select.getFirstSelectedOption().getText());
 		}
-		}
-		else
-		{
-			System.out.println("it is not mulitple so select one element only at a time");
-			select.selectByIndex(0);
-		}
-		select.deselectByIndex(0);
-		select.deselectByValue("sm");
-		select.deselectByVisibleText("Thor");
+	}
+	driver.quit();
+}
 		
-		select.deselectByIndex(2);
-		select.deselectByIndex(5);
 		
-		List<WebElement>selectedOptions1=	select.getAllSelectedOptions();
-		System.out.println(selectedOptions1.size());
 		
 		
 		
 
-		driver.quit();
+		
 
 
 	}
 
-}
+
