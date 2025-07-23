@@ -33,30 +33,33 @@ public class Learning_Actions1 {
 		WebElement toEle=driver.findElement(By.xpath("(//tr[@data-ri='0'])[last()]"));
 		actions.dragAndDrop(fromEle, toEle).build().perform();
 		
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement toastMsg=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class,'ui-growl-message')]")));
+		System.out.println(toastMsg.getText());
 		
-		 // Wait for the toast message to appear
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement toastMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.xpath("//div[contains(@class,'ui-growl-message')]")
-        ));
-       // wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(null))));
-        // Capture the full text
-        String fullMessage = toastMessage.getText();
-        System.out.println("Full Toast Message: " + fullMessage);
-		
-        //Draggable Columns
-        
-        WebElement nameEle=driver.findElement(By.xpath("//th[contains(@id,'form:j_idt94:j_idt95')]"));
-        WebElement quantityEle=driver.findElement(By.xpath("//th[contains(@id,'form:j_idt94:j_idt99')]"));
-        actions.dragAndDrop(nameEle, quantityEle).perform();
-        
-        
-        WebElement toastMessageCol = wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.xpath("//div[contains(@class,'ui-growl-message')]")));
-        String fullMessageCol = toastMessageCol.getText();
-        System.out.println("Full Toast Message: " + fullMessageCol);
-        
-		driver.quit();
+//		 // Wait for the toast message to appear
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        WebElement toastMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
+//            By.xpath("//div[contains(@class,'ui-growl-message')]")
+//        ));
+//       // wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(null))));
+//        // Capture the full text
+//        String fullMessage = toastMessage.getText();
+//        System.out.println("Full Toast Message: " + fullMessage);
+//		
+//        //Draggable Columns
+//        
+//        WebElement nameEle=driver.findElement(By.xpath("//th[contains(@id,'form:j_idt94:j_idt95')]"));
+//        WebElement quantityEle=driver.findElement(By.xpath("//th[contains(@id,'form:j_idt94:j_idt99')]"));
+//        actions.dragAndDrop(nameEle, quantityEle).perform();
+//        
+//        
+//        WebElement toastMessageCol = wait.until(ExpectedConditions.visibilityOfElementLocated(
+//            By.xpath("//div[contains(@class,'ui-growl-message')]")));
+//        String fullMessageCol = toastMessageCol.getText();
+//        System.out.println("Full Toast Message: " + fullMessageCol);
+//        
+//		driver.quit();
 	}
 
 }
