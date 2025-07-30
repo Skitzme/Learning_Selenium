@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -18,12 +19,16 @@ public class ProgressBar {
 	        driver.get("https://leafground.com/drag.xhtml");  // Replace with your actual page URL
 
 	        Actions actions = new Actions(driver);
-	        Wait<WebDriver> wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+	        Wait<WebDriver> wait=new WebDriverWait(driver, Duration.ofSeconds(20));
 	        
 	        WebElement startBtn=driver.findElement(By.cssSelector("#form\\:j_idt119"));
 	        startBtn.click();
 	        
 	        WebElement progressBar=driver.findElement(By.cssSelector("#form\\:j_idt121"));
+	       
+			WebElement sizeToast=wait.until(ExpectedConditions.
+		visibilityOfElementLocated(By.xpath("//div[contains(@class,'ui-growl-message')]")));
+			System.out.println(sizeToast.getText());
 	}
 
 }
